@@ -1,5 +1,6 @@
 #[allow(unused_variables)]
-pub fn get_seed(dec1: u32, dec2: u32, end1: u32) -> u32 {
+#[no_mangle]
+pub extern "C" fn get_seed(dec1: u32, dec2: u32, end1: u32) -> u32 {
     let init_seed_hash: u64 = (dec2 as u64) << 32 | dec1 as u64;
     let end_seed_hash: u64 = end1 as u64;
 
