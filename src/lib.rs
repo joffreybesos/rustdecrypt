@@ -1,3 +1,6 @@
+#![no_std]
+#![no_main]
+
 #[allow(unused_variables)]
 #[no_mangle]
 pub extern "C" fn get_seed(dec1: u32, dec2: u32, end1: u32) -> u32 {
@@ -43,4 +46,10 @@ mod tests {
         let seed = get_seed(2817861018,2714388087,3262333376);
         assert_eq!(seed, 741378286);
     }
+}
+
+// needed because of no_std
+#[panic_handler]
+fn my_panic(_info: &core::panic::PanicInfo) -> ! {
+    loop {}
 }
